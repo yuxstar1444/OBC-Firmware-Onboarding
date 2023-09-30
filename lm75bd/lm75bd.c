@@ -27,8 +27,13 @@ error_code_t lm75bdInit(lm75bd_config_t *config) {
 
 error_code_t readTempLM75BD(uint8_t devAddr, float *temp) {
   /* Implement this driver function */
-  
-  return ERR_CODE_SUCCESS;
+  //TODO manipulate recv_buff to return a number 
+  uint8_t buff = 0b00000000;
+  uint16_t recv_buff; //variable to store address have to use bit manipulation to get return a number
+  i2cSendTo(LM75BD_OBC_I2C_ADDR, &buff, 1U);
+  i2cReceiveFrom(LM75BD_OBC_I2C_ADDR, &recv_buff, 2U);
+  *temp = //read the two bytes
+  //ahhhh
 }
 
 #define CONF_WRITE_BUFF_SIZE 2U
